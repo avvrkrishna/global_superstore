@@ -1,5 +1,6 @@
 {{ config(
-    materialized = "table"
+    materialized = "table",
+    schema = "master_data"
 )}}
 
 
@@ -13,4 +14,4 @@ WITH CTE_MY_DATE AS (
         ,TO_CHAR(MY_DATE,'MMMM') AS FISCAL_MONTH_FULL_NAME
         ,DAYOFWEEK(MY_DATE) AS DAY_OF_WEEK
         ,DAYOFYEAR(MY_DATE) AS DAY_OF_YEAR
-    FROM CTE_MY_DATE;
+    FROM CTE_MY_DATE

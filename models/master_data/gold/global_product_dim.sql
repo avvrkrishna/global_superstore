@@ -1,11 +1,11 @@
 {{ config(
-    materialized = 'incremental'
-    unique_key = 'product_id'
+    materialized = "incremental",
+    unique_key = "product_id",
+    schema = "master_data"
 )}}
 
 select 
     distinct 
-    country,
     product_id,
     product_name,
     category as product_category,

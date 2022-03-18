@@ -1,6 +1,7 @@
 {{ config(
     materialized = "incremental",
-    unique_key = "sales_person_name"
+    unique_key = "sales_person_name",
+    schema = "master_data"
 )}}
 
 select 
