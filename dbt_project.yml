@@ -1,0 +1,62 @@
+
+name: 'global_superstore'
+version: '1.0.0'
+config-version: 2
+
+profile: 'global_superstore'
+
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  
+clean-targets:         
+    - "target"
+    - "dbt_modules"
+
+
+models:
+  global_superstore:
+    copy_grants: true
+    transient: false
+    materialized: table
+    tags: ["global_superstore"]
+    pre-hook:
+      - "alter session set query_tag = '{{ 'dbt|'~project_name~'|'~this.name }}'"
+    master_data:
+      tags: ["master_data"]
+      schema: MASTER_DATA
+      gold:
+        schema: MASTER_DATA
+        global_customer_dim:
+          tags: ["global_customer_dim"]
+          schema: MASTER_DATA
+        global_product_dim:
+          tags: [product_dim"]
+          schema: MASTER_DATA
+        calendar_dim:
+          tags: ["calendar_dim"]
+          schema: MASTER_DATA
+        global_sales_person_dim:
+          tags: ["global_sales_person_dim"]
+          schema: MASTER_DATA
+    stage:
+      tags: ["stage"]
+      schema: STAGE_RAW
+      stage_global_superstore_orders:
+        tags: ["stage_global_superstore_orders"]
+        schema: STAGE_RAW
+      stage_sales_returns:
+        tags: ["sales_returns"]
+        schema: STAGE_RAW
+    
+    analytics:
+      tags: ["gold"]
+      schema: ANALYTICS
+      global_superstore_sales_fact:
+        tags: ["global_superstore_sales_fact"]
+        schema: ANALYTICS
+          

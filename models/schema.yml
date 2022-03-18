@@ -1,0 +1,71 @@
+version: 2
+
+sources:
+  - name: GLOBAL_SUPERSTORE
+    database: '{{target.name~"_ANALYTICS"}}'
+    schema: STAGE_RAW
+    description: Stage Raw Schema
+    tables:
+      - name: STAGE_GLOBAL_SUPERSTORE_ORDERS
+        description: Raw Global SuperStore Orders table
+      - name: STAGE_SALES_RETURNS
+        description: Raw Sales Returns Table
+        
+models:
+  - name: customer_dim
+    description: Customer Dimension Table
+    columns:
+    - name: CUSTOMER_ID
+      description: Customer Unique Id
+    - name: CUSTOMER_NAME
+      description: Customer Name
+    - name: POSTAL_CODE
+      description: Postal Code
+    - name: CITY
+      description: City
+    - name: STATE
+      description: STATE
+    - name: COUNTRY
+      description: COUNTRY
+  
+  - name: product_dim
+    description: Product dimension table
+    columns:
+    - name: COUNTRY
+      description: COUNTRY
+    - name: PRODUCT_ID
+      description: Unique Product Id
+    - name: PRODUCT_NAME
+      description: Product Name
+    - name: PRODUCT_CATEGORY
+      description: Product Category
+    - name: PRODUCT_SUB_CATEGORY
+      description: Product SubCategory
+  
+  - name: calendar_dim
+    description: Calendar Dimension Table
+    columns:
+    - name: Cal_dt
+      description: Calendar Date
+    - name: fiscal_year
+      description: Fiscal Year
+    - name: fiscal_month
+      description: Fiscal Month of the Year
+    - name: fiscal_year_week
+      description: Fiscal Year week
+  
+  - name: sales_person_dim
+    description: Sales Person Dimension Table
+    columns:
+    - name: sales_person_name
+      description: Sales Person Name
+    - name: sales_person_region
+      description: Sales Person Region
+  
+  - name: global_superstore_sales_fact
+    description: Glboal Superstore sales fact table
+    columns:
+    - name:
+      description:
+    - name:
+      description:  
