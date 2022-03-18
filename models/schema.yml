@@ -1,18 +1,7 @@
 version: 2
 
-sources:
-  - name: GLOBAL_SUPERSTORE
-    database: '{{target.name~"_ANALYTICS"}}'
-    schema: STAGE_RAW
-    description: Stage Raw Schema
-    tables:
-      - name: STAGE_GLOBAL_SUPERSTORE_ORDERS
-        description: Raw Global SuperStore Orders table
-      - name: STAGE_SALES_RETURNS
-        description: Raw Sales Returns Table
-        
 models:
-  - name: customer_dim
+  - name: global_customer_dim
     description: Customer Dimension Table
     columns:
     - name: CUSTOMER_ID
@@ -28,13 +17,14 @@ models:
     - name: COUNTRY
       description: COUNTRY
   
-  - name: product_dim
+  - name: global_product_dim
     description: Product dimension table
     columns:
-    - name: COUNTRY
-      description: COUNTRY
     - name: PRODUCT_ID
       description: Unique Product Id
+      tests:
+        - unique
+        - not_null
     - name: PRODUCT_NAME
       description: Product Name
     - name: PRODUCT_CATEGORY
@@ -45,7 +35,7 @@ models:
   - name: calendar_dim
     description: Calendar Dimension Table
     columns:
-    - name: Cal_dt
+    - name: cal_dt
       description: Calendar Date
     - name: fiscal_year
       description: Fiscal Year
@@ -54,18 +44,56 @@ models:
     - name: fiscal_year_week
       description: Fiscal Year week
   
-  - name: sales_person_dim
+  - name: global_sales_person_dim
     description: Sales Person Dimension Table
     columns:
     - name: sales_person_name
       description: Sales Person Name
     - name: sales_person_region
       description: Sales Person Region
-  
+    
   - name: global_superstore_sales_fact
-    description: Glboal Superstore sales fact table
+    description: Global Superstore Sales fact table
     columns:
-    - name:
-      description:
-    - name:
-      description:  
+    - name: row_id
+      description: Unique row_id
+    - name: order_id
+      description: Order id
+    - name: order_date
+      description: Order date
+    - name: ship_date
+      description: Ship date
+    - name: customer_id
+      description: customer id
+    - name: customer_name
+      description: customer name
+    - name: segment
+      description: segment
+    - name: postal_code
+      description: postal code
+    - name: city
+      description: city
+    - name: state
+      description: state
+    - name: country
+      description: country
+    - name: region
+      description: region
+    - name: market
+      description: market
+    - name: product_id
+      description: product id
+    - name: product_name
+      description: product name
+    - name: sales
+      description: sales
+    - name: quantity
+      description: quantity
+    - name: discount
+      description: discount
+    - name: profit
+      description: profit
+    - name: shipping_cost
+      description: shipping cost
+    - name: order_priority
+      description: order priority
