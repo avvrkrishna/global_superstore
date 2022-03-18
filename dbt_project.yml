@@ -59,4 +59,3 @@ models:
       global_superstore_sales_fact:
         tags: ["global_superstore_sales_fact"]
         schema: ANALYTICS
-          
