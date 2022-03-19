@@ -24,8 +24,8 @@ with sales_data as
         case when returned_flag = 1 then -fact.quantity else fact.quantity end as quantity,
         fact.shipping_cost
     from {{ref('global_superstore_sales_fact')}} fact
-    left join {{ref('stage_sales_returns')}} returns on fact.order_id = returns.order_id and fact.region = returns.region
-    left join {{ref('stage_sales_person_dim')}} sp on sp.sales_person_region = fact.region
+    left join {{ref('global_sales_returns')}} returns on fact.order_id = returns.order_id and fact.region = returns.region
+    left join {{ref('global_sales_person_dim')}} sp on sp.sales_person_region = fact.region
     inner join {{ref('calendar_dim')}} cal on fact.order_date = cal.cal_dt
 ),
 
