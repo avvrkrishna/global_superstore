@@ -1,7 +1,4 @@
-{{ config(
-    materialized = "incremental",
-    unique_key = "row_id"
-)}}
+
 
 select 
 cast(row_id as number(10,0)) as row_id,
@@ -28,4 +25,4 @@ cast(regexp_replace(discount,'[^0-9\\.]+','') as number(20,3)) as discount,
 cast(regexp_replace(profit,'[^0-9\\.]+','') as number(20,3)) as profit,
 cast(regexp_replace(shipping_cost,'[^0-9\\.]+','') as number(20,3)) as shipping_cost,
 order_priority
-from {{ref('stage_global_superstore_orders')}}
+from DEV_ANALYTICS.STAGE_RAW.stage_global_superstore_orders

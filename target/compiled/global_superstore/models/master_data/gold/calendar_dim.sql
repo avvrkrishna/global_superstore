@@ -1,7 +1,4 @@
-{{ config(
-    materialized = "table",
-    schema = "master_data"
-)}}
+
 
 
 WITH CTE_MY_DATE AS (

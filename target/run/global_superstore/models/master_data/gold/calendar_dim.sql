@@ -1,7 +1,7 @@
-{{ config(
-    materialized = "table",
-    schema = "master_data"
-)}}
+
+
+      create or replace  table DEV_ANALYTICS.master_data.calendar_dim copy grants as
+      (
 
 
 WITH CTE_MY_DATE AS (
@@ -27,3 +27,5 @@ WITH CTE_MY_DATE AS (
           else case when month(cal_dt) in (1,3,5,7,8,10,12) then dateadd(day,30,fiscal_month_start_dt)
               else dateadd(day,29,fiscal_month_start_dt) end end as fiscal_month_end_dt
     FROM CTE_MY_DATE
+      );
+    
