@@ -5,7 +5,7 @@ models:
     description: Customer Dimension Table
     columns:
     - name: CUSTOMER_ID
-      description: Customer Unique Id
+      description: Customer Id
     - name: CUSTOMER_NAME
       description: Customer Name
     - name: POSTAL_CODE
@@ -41,8 +41,20 @@ models:
       description: Fiscal Year
     - name: fiscal_month
       description: Fiscal Month of the Year
-    - name: fiscal_year_week
-      description: Fiscal Year week
+    - name: fiscal_month_full_name
+      description: Fiscal Month Full Name
+    - name: day_of_week
+      description: Day of the Week
+    - name: day_of_year
+      description: Day of Year
+    - name: current_year
+      description: Current Year Indicator
+    - name: is_leap_year
+      description: Leap Year Indicator Flag
+    - name: fiscal_month_start_dt
+      description: Fiscal Month Start Date
+    - name: fiscal_month_end_dt
+      description: Fiscal Month End Date
   
   - name: global_sales_person_dim
     description: Sales Person Dimension Table
@@ -97,3 +109,57 @@ models:
       description: shipping cost
     - name: order_priority
       description: order priority
+  
+  - name: global_superstore_summary_fact
+    description: Global Superstore summary fact table
+    columns:
+    - name: fiscal_year
+      description: fiscal year
+    - name: fiscal_month
+      description: fiscal month
+    - name: fiscal_month_end_dt
+      description: fiscal month end date
+    - name: current_year
+      description: Current Year column which depicts value based on year of current date
+    - name: product_id
+      description: Product id
+    - name: product_category
+      description: product category
+    - name: product_sub_category
+      description: product subcategory
+    - name: state
+      description: state
+    - name: region
+      description: region
+    - name: country
+      description: country
+    - name: market
+      description: market
+    - name: sales_person_name
+      description: sales person name
+    - name: rate_of_return
+      description: Rate of Return based on the Sales Return data
+    - name: Month_to_month_change
+      description: Month to Month Change in Sales Value
+    - name: Month_to_Month_change_pct
+      description: Month to Month Change of sales value percentage
+    - name: category_wise_sales_growth
+      description: Category wise sales growth
+    - name: category_wise_sales_growth_pct
+      description: category wise sales growth percentage
+    - name: sales_person_yearly_objective_sales
+      description: sales person yearly objective sales
+    - name: sales_value
+      description: Sales Value
+    - name: Sales Returns
+      description: Sales Returns
+    - name: Discount
+      description: Discount
+    - name: Profit
+      description: Profit
+    - name: quantity
+      description: quantity
+    - name: shipping_cost
+      description: shipping_cost
+    - name: revenue_per_sale
+      description: Revenue per sale
