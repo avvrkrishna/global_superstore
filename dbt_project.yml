@@ -46,8 +46,8 @@ models:
     stage:
       tags: ["stage"]
       schema: STAGE_RAW
-      stage_global_superstore_orders:
-        tags: ["stage_global_superstore_orders"]
+      stage_superstore_orders:
+        tags: ["stage_superstore_orders"]
         schema: STAGE_RAW
       stage_sales_returns:
         tags: ["sales_returns"]
