@@ -52,10 +52,18 @@ models:
       stage_sales_returns:
         tags: ["sales_returns"]
         schema: STAGE_RAW
+      stage_sales_person_dim:
+        tags: ["stage_sales_person_dim"]
     
     analytics:
       tags: ["gold"]
       schema: ANALYTICS
+      global_sales_returns:
+        tags: ["global_sales_returns"]
+        schema: ANALYTICS
       global_superstore_sales_fact:
         tags: ["global_superstore_sales_fact"]
+        schema: ANALYTICS
+      global_superstore_summary_fact:
+        tag: ["global_superstore_summary_fact"]
         schema: ANALYTICS

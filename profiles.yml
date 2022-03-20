@@ -1,19 +1,28 @@
 config:
   send_anonymous_usage_stats: False
 
-default:
+global_superstore:
+  target: dev
   outputs:
-
     dev: # User-Password config
       type: snowflake
       account: your-snowflake-account-id-here
-      user: DBT_CLOUD_DEV
+      user: DEV_DBT_CLOUD
       password: your-password-here
-      role: TRANSFORMER_DEV
+      role: DEV_DBTDE_CLOUD
       database: DEV
-      warehouse: TRANSFORMING
+      warehouse: DEV_CLOUD_ANALYTICS
       schema: dbt_your-username-here
       threads: 2
       client_session_keep_alive: False
-
-  target: dev
+    PROD: # User-Password config
+      type: snowflake
+      account: your-snowflake-account-id-here
+      user: PROD_DBT_CLOUD
+      password: your-password-here
+      role: PROD_DBTDE_CLOUD
+      database: PROD_ANALYTICS
+      warehouse: PROD_CLOUD_ANALYTICS
+      schema: dbt_your-username-here
+      threads: 2
+      client_session_keep_alive: False

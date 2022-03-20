@@ -1,6 +1,5 @@
 {{ config(
     materialized = "incremental",
-    unique_key = "customer_id",
     schema = "master_data"
 )}}
 
@@ -12,4 +11,8 @@ select
     city,
     state,
     country 
-from {{ref('stage_global_superstore_orders')}}
+from {{ref('stage_superstore_orders')}}
+{% if is_incremental() %}
+where record_created_datetime in
+(select max(record_created_datetime) from {{ref('stage_superstore_orders')}})
+{% endif %}
