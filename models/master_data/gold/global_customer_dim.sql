@@ -10,9 +10,10 @@ select
     postal_code,
     city,
     state,
-    country 
-from {{ref('stage_superstore_orders')}}
+    country,
+    record_created_datetime
+from {{ref('global_superstore_sales_fact')}}
 {% if is_incremental() %}
-where record_created_datetime in
-(select max(record_created_datetime) from {{ref('stage_superstore_orders')}})
+where record_created_datetime >
+(select max(record_created_datetime) from {{this}})
 {% endif %}

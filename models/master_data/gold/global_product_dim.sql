@@ -9,9 +9,10 @@ select
     product_id,
     product_name,
     category as product_category,
-    sub_category as product_sub_category
-from {{ref('stage_superstore_orders')}}
+    sub_category as product_sub_category,
+    record_created_datetime
+from {{ref('global_superstore_sales_fact')}}
 {% if is_incremental() %}
-where record_created_datetime in
-(select max(record_created_datetime) from {{ref('stage_superstore_orders')}})
+where record_created_datetime >
+(select max(record_created_datetime) from {{this}})
 {% endif %}

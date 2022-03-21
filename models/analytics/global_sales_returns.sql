@@ -1,11 +1,12 @@
 {{ config(
     materialized = "incremental",
     unique_key = "order_id",
-    schema = "analytis"
+    schema = "analytics"
 )}}
 
 select 
     returned,
     order_id,
-    region
+    region,
+    current_timestamp() as record_created_datetime
 from {{ref('stage_sales_returns')}}
