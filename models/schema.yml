@@ -3,6 +3,13 @@ version: 2
 models:
   - name: global_customer_dim
     description: Customer Dimension Table
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - customer_id
+            - state
+            - city
+            - postal_code
     columns:
     - name: CUSTOMER_ID
       description: Customer Id
@@ -65,6 +72,8 @@ models:
     columns:
     - name: sales_person_name
       description: Sales Person Name
+      tests:
+        - unique
     - name: sales_person_region
       description: Sales Person Region
     - name: record_created_datetime
@@ -77,6 +86,8 @@ models:
       description: returned
     - name: order_id
       description: Order Id
+      tests:
+        - unique
     - name: region
       description: region
     - name: record_created_datetime
@@ -87,6 +98,8 @@ models:
     columns:
     - name: row_id
       description: Unique row_id
+      tests:
+        - unique
     - name: order_id
       description: Order id
     - name: order_date
@@ -132,6 +145,13 @@ models:
   
   - name: global_superstore_summary_fact
     description: Global Superstore summary fact table
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - product_id
+            - country
+            - state
+            - fiscal_month
     columns:
     - name: fiscal_year
       description: fiscal year
