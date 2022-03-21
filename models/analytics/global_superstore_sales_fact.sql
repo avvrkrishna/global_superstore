@@ -28,5 +28,6 @@ cast(regexp_replace(quantity,'[^0-9\\.]+','') as number(20,3)) as quantity,
 cast(regexp_replace(discount,'[^0-9\\.]+','') as number(20,3)) as discount,
 cast(regexp_replace(profit,'[^0-9\\.]+','') as number(20,3)) as profit,
 cast(regexp_replace(shipping_cost,'[^0-9\\.]+','') as number(20,3)) as shipping_cost,
-order_priority
+order_priority,
+current_timestamp() as record_created_datetime
 from {{ref('stage_superstore_orders')}}
