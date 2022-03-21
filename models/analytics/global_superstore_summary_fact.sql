@@ -105,7 +105,8 @@ select
     sum(case when sd.returned_flag = 1 then 0 else sd.profit end) as profit,
     sum(sd.quantity) as quantity,
     sum(sd.shipping_cost) as shipping_cost,
-    sum(case when sd.returned_flag = 1 then 0 else sd.sales end)/count(product_id) as revenue_per_sale
+    sum(case when sd.returned_flag = 1 then 0 else sd.sales end)/count(product_id) as revenue_per_sale,
+    current_timestamp() last_refresh_datetime
 from sales_data sd
 left join rate_of_return_cte ror on ror.fiscal_year = sd.fiscal_year and ror.state = sd.state
 left join month_to_month_difference mtm on sd.fiscal_year = mtm.fiscal_year and sd.fiscal_month = mtm.fiscal_month
