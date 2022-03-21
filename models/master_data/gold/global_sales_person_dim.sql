@@ -7,5 +7,5 @@
 select 
     sales_person_name,
     sales_person_region,
-    record_created_datetime
+    current_timestamp() as record_created_datetime
 from {{ref('stage_sales_person_dim')}}
