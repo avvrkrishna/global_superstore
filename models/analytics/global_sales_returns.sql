@@ -4,7 +4,8 @@
     schema = "analytics"
 )}}
 
-select 
+select
+    {{dbt_utils.surrogate_key(['order_id'])}} as global_sales_returns_key,
     returned,
     order_id,
     region,

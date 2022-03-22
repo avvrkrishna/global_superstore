@@ -11,6 +11,8 @@ models:
             - city
             - postal_code
     columns:
+    - name: CUSTOMER_DIM_KEY
+      description: Customer Dimension Surrogate Key
     - name: CUSTOMER_ID
       description: Customer Id
     - name: CUSTOMER_NAME
@@ -29,6 +31,8 @@ models:
   - name: global_product_dim
     description: Product dimension table
     columns:
+    - name: PRODUCT_DIM_KEY
+      description: Product Dimension Surrogate Key
     - name: PRODUCT_ID
       description: Unique Product Id
       tests:
@@ -70,6 +74,8 @@ models:
   - name: global_sales_person_dim
     description: Sales Person Dimension Table
     columns:
+    - name: sales_person_dim_key
+      description: Sales Person Dimension Surrogate Key
     - name: sales_person_name
       description: Sales Person Name
       tests:
@@ -82,6 +88,8 @@ models:
   - name: global_sales_returns
     description: Global Sales Returns Table
     columns:
+    - name: global_sales_returns_key
+      description: sales returns surrogate key
     - name: returned
       description: returned
     - name: order_id
@@ -96,6 +104,8 @@ models:
   - name: global_superstore_sales_fact
     description: Global Superstore Sales fact table
     columns:
+    - name: global_sales_fact_key
+      description: Global Superstore sales fact surrogate key
     - name: row_id
       description: Unique row_id
       tests:
@@ -153,6 +163,8 @@ models:
             - state
             - fiscal_month
     columns:
+    - name: global_summary_fact_key
+      description: Global Superstore summary fact surrogate key
     - name: fiscal_year
       description: fiscal year
     - name: fiscal_month
