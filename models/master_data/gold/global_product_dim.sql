@@ -5,7 +5,8 @@
 )}}
 
 select 
-    distinct 
+    distinct
+    {{dbt_utils.surrogate_key(['product_id'])}} as product_dim_key, 
     product_id,
     product_name,
     category as product_category,

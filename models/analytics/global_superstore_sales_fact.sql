@@ -5,6 +5,7 @@
 )}}
 
 select 
+{{dbt_utils.surrogate_key(['row_id'])}} as global_sales_fact_key,
 cast(row_id as number(10,0)) as row_id,
 order_id,
 cast(order_date as date) as order_date,

@@ -6,7 +6,8 @@
 )}}
 
 select 
-    distinct 
+    distinct
+    {{dbt_utils.surrogate_key(['customer_id','city','state','postal_code'])}}  as customer_dim_key,
     customer_id,
     customer_name,
     nvl(postal_code,'') as postal_code,

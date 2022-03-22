@@ -17,7 +17,7 @@ with sales_data as
         fact.region,
         fact.country,
         fact.market,
-        coalesce(sp.sales_person_name,'Canada') as sales_person_name,
+        case when country = 'Canada' then 'Canada' else sp.sales_person_name end as sales_person_name,
         case when returns.returned = 'Yes' then 1 else 0 end as returned_flag,
         fact.sales as sales,
         fact.discount,
@@ -79,7 +79,8 @@ sales_person_yearly_objective as
     from sales_person_sales
 )
 
-select 
+select
+    {{dbt_utils.surrogate_key(['product_id','sd.state','country','sd.fiscal_month'])}}  as global_summary_fact_key,
     sd.fiscal_year,
     sd.fiscal_month,
     sd.fiscal_month_end_dt,
@@ -112,4 +113,4 @@ left join rate_of_return_cte ror on ror.fiscal_year = sd.fiscal_year and ror.sta
 left join month_to_month_difference mtm on sd.fiscal_year = mtm.fiscal_year and sd.fiscal_month = mtm.fiscal_month
 left join category_wise_sales_growth cws on sd.fiscal_year = cws.fiscal_year and sd.product_category = cws.product_category
 left join sales_person_yearly_objective spy on sd.fiscal_year = spy.fiscal_year and sd.sales_person_name = spy.sales_person_name
-{{dbt_utils.group_by(19)}}
+{{dbt_utils.group_by(20)}}
