@@ -79,7 +79,8 @@ sales_person_yearly_objective as
     from sales_person_sales
 )
 
-select 
+select
+    {{dbt_utils.surrogate_key(['product_id','state','country','fiscal_month'])}}  as global_summary_fact_key,
     sd.fiscal_year,
     sd.fiscal_month,
     sd.fiscal_month_end_dt,
