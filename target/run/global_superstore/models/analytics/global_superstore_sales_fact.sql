@@ -1,9 +1,14 @@
 
 
-      create or replace  table DEV_ANALYTICS.ANALYTICS.global_superstore_sales_fact copy grants as
+      create or replace  table DEV_ANALYTICS.analytics.global_superstore_sales_fact copy grants as
       (
 
 select 
+md5(cast(coalesce(cast(row_id as 
+    varchar
+), '') as 
+    varchar
+)) as global_sales_fact_key,
 cast(row_id as number(10,0)) as row_id,
 order_id,
 cast(order_date as date) as order_date,
@@ -27,7 +32,8 @@ cast(regexp_replace(quantity,'[^0-9\\.]+','') as number(20,3)) as quantity,
 cast(regexp_replace(discount,'[^0-9\\.]+','') as number(20,3)) as discount,
 cast(regexp_replace(profit,'[^0-9\\.]+','') as number(20,3)) as profit,
 cast(regexp_replace(shipping_cost,'[^0-9\\.]+','') as number(20,3)) as shipping_cost,
-order_priority
-from DEV_ANALYTICS.STAGE_RAW.stage_global_superstore_orders
+order_priority,
+current_timestamp() as record_created_datetime
+from DEV_ANALYTICS.STAGE_RAW.stage_superstore_orders
       );
     
