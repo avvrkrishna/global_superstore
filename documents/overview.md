@@ -18,10 +18,7 @@
 - Global Reporting Team: The data from the summary tables will be consumed by business people and dashboards build for them either through Tableau or Power BI
 
 
-### Open Issues:
-1. 
-2. 
-3. 
+
 
 ## DBT Processing Details:
 | **DB Name**| **Schema Name** | **DBT Model / Tag Name** | **Usage** | **Avg Execution Time**|
@@ -34,4 +31,10 @@
 |<ENV>_ANALYTICS | MASTER_DATA | global_superstore_sales_fact | Global Superstore sales fact table | 6 Secs|
 |<ENV>_ANALYTICS | MASTER_DATA | global_superstore_summary_fact | Global Superstore Summary Table | 4 Secs|
 
+  
+### Open Issues:
+1. 
+2. 
+3.   
+ 
 {% enddocs %}
